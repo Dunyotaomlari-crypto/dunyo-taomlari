@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Cuisine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color:blue;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .card img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .card-desc {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>World Cuisine</h1>
+        <p>Explore delicious recipes from around the globe!</p>
+    </header>
+
+    <div class="container">
+        <input type="text" id="searchInput" placeholder="Search for a dish..." style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; font-size: 1rem;">
+        <div class="grid" id="cardGrid">
+            <div class="card" data-name="Italian Pasta">
+                <img src="https://res.cloudinary.com/zicasso/image/fetch/c_fill,f_auto,g_auto,h_576,q_auto,w_865/https://images.zicasso.com/c782b17f6327ee301f4db28fee806aa7.jpg" alt="Italian Pasta">
+                <div class="card-content">
+                    <h2 class="card-title">Italyacha Pasta</h2>
+                    <p class="card-desc">Yangi ingredientlar va zaytun moyi qo'shilgan italyan makaronining haqiqiy ta'midan rohatlaning.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Japanese Sushi">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVOzKobxORnQ3HutLLpGR00Bfy9Hn_WFCH3Q&s" alt="Japanese Sushi">
+                <div class="card-content">
+                    <h2 class="card-title">Yaponya Sushilari</h2>
+                    <p class="card-desc">Mutaxassislik bilan tayyorlangan sushi rulolari bilan Yaponiyaning ajoyib ta'mini his eting.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Mexican Tacos">
+                <img src="https://www.onceuponachef.com/images/2023/08/Beef-Tacos-760x570.jpg" alt="Mexican Tacos">
+                <div class="card-content">
+                    <h2 class="card-title">Meksika takolari</h2>
+                    <p class="card-desc">Achchiq va mazali takolar bilan Meksika oshxonasining jonli dunyosiga sho'ng'ing.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Indian Curry">
+                <img src="https://i.ytimg.com/vi/aygGQ_RGj7M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAJ4ibt38S7PtVIyCcs72d_xfJn_Q" alt="Indian Curry">
+                <div class="card-content">
+                    <h2 class="card-title">Hind karri</h2>
+                    <p class="card-desc">Hindistonning boy va xushbo'y ziravorlarini an'anaviy kori taomlari bilan tatib ko'ring.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="French Croissant">
+                <img src="https://www.datocms-assets.com/43891/1694591593-shutterstock_1033447087.jpg?auto=compress%2Cformat&fit=crop&h=450&w=800" alt="French Croissant">
+                <div class="card-content">
+                    <h2 class="card-title">Fransuz kruvasan</h2>
+                    <p class="card-desc">Klassik frantsuz kruassanining sariyog 'va loyqa shirinligini tatib ko'ring.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Chinese Dumplings">
+                <img src="https://lh4.googleusercontent.com/proxy/Yw0FamvVu16_SVYFUKVr5J4dzEjSTzlTMrFD_Tjc4qXnaGRBvP8IPuL5YVqL541Xq8haeo5H0SFIgL_bn-2cI7LZauUP6LzTfDg07SxDHr8A9QInDl-hYpKF9AjsFtqvMKlTq7PnV1fd8KhwyvA" alt="Chinese Dumplings">
+                <div class="card-content">
+                    <h2 class="card-title">Xitoy koftesi</h2>
+                    <p class="card-desc">An'anaviy xitoy köftelarining mazali va xilma-xil ta'midan zavqlaning.</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Thai Pad Thai">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/pad-thai-index-6477629462a38.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*" alt="Thai Pad Thai">
+                <div class="card-content">
+                    <h2 class="card-title">Thai Pad Thai</h2>
+                    <p class="card-desc">Thai Pad Tha-da shirin, nordon va achchiq ta'mlarning ajoyib aralashmasini his eting</p>
+                </div>
+            </div>
+
+            <div class="card" data-name="Spanish Paella">
+                <img src="https://images.ctfassets.net/lufu0clouua1/2qUGdB4SXoLbzrqXAvbF2g/95516b632b32057ec1cf2ea4c335fbdc/EASY_SPANISH_PAELLA_06_27_2218291__1_.jpg" alt="Spanish Paella">
+                <div class="card-content">
+                    <h2 class="card-title">Ispaniyalik paella</h2>
+                    <p class="card-desc">Klassik ispan taomi bo'lgan jonli va rang-barang dengiz mahsulotlari paellasidan rohatlaning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy;2024 Jahon oshxonasi. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
