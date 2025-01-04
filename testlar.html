@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIZ-MAT O'quv Markazi</title>
+    <style>
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #4CAF50;
+        }
+        section {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 90%;
+            max-width: 600px;
+        }
+        section img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+		#orqa {
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky5VuMZ6Mbmx1A6V2NUWU2MgDCd0x0gxqkg&s");
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+		}
+
+    </style>
+</head>
+<body id="orqa">
+    <header>
+        FIZ-MAT O'quv Markazi
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#math">Matematika</a></li>
+            <li><a href="#eng">Ingliz Tili</a></li>
+            <li><a href="#it">IT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Matematika bo'limi -->
+    <section id="math">
+        <h2>Matematika</h2>
+        <p>Matematika bo'yicha testlar va masalalar.</p>
+        <button id="mathTest">Testni boshlash</button>
+        <div id="mathTestResults"></div>
+    </section>
+
+    <!-- Ingliz tili bo'limi -->
+    <section id="eng">
+        <h2>Ingliz Tili</h2>
+        <p>Ingliz tili bo'yicha mashqlar.</p>
+        <button id="engTest">Testni boshlash</button>
+        <div id="engTestResults"></div>
+    </section>
+
+    <!-- IT bo'limi -->
+    <section id="it">
+        <h2>IT</h2>
+        <p>IT bo'yicha bilimlarni rivojlantirish.</p>
+        <button id="itTest">Testni boshlash</button>
+        <div id="itTestResults"></div>
+    </section>
+
+    <script>
+        // Matematika bo'limidagi testlar
+        document.getElementById("mathTest").addEventListener("click", function() {
+            const mathQuestions = [
+                { question: "2 + 2 = ?", answer: 4 },
+                { question: "5 + 3 = ?", answer: 8 },
+                { question: "6 * 3 = ?", answer: 18 },
+                { question: "12 / 4 = ?", answer: 3 },
+                { question: "7 - 4 = ?", answer: 3 }
+            ];
+
+            let htmlContent = "";
+            mathQuestions.forEach((q, index) => {
+                htmlContent += `
+                    <p>${index + 1}. ${q.question}</p>
+                    <input type='text' id='mathAnswer${index}' placeholder='Javobingizni kiriting'>
+                    <button onclick='checkMathAnswer(${index}, ${q.answer})'>Javobni tekshirish</button>
+                    <p id='result${index}'></p>
+                `;
+            });
+
+            document.getElementById("mathTestResults").innerHTML = htmlContent;
+        });
+
+        function checkMathAnswer(index, correctAnswer) {
+            const userAnswer = document.getElementById(`mathAnswer${index}`).value;
+            const result = document.getElementById(`result${index}`);
+
+            if (parseInt(userAnswer) === correctAnswer) {
+                result.innerHTML = "<span style='color: green;'>Javob to'g'ri!</span>";
+            } else {
+                result.innerHTML = "<span style='color: red;'>Javob noto'g'ri. To'g'ri javob: " + correctAnswer + "</span>";
+            }
+        }
+
+        // Ingliz tili bo'limidagi testlar
+        document.getElementById("engTest").addEventListener("click", function () {
+            document.getElementById("engTestResults").innerHTML =
+                "<p>1. 'Hello' so'zini o'zbek tilida qanday aytishadi?</p><input type='text' id='engAnswer'><button onclick='checkEngAnswer()'>Javobni tekshirish</button>" +
+                "<p>2. 'Goodbye' so'zini o'zbek tilida qanday aytishadi?</p><input type='text' id='engAnswer2'><button onclick='checkEngAnswer2()'>Javobni tekshirish</button>";
+        });
+
+        function checkEngAnswer() {
+            const answer = document.getElementById("engAnswer").value.toLowerCase();
+            const result = document.getElementById("engTestResults");
+            if (answer === "salom") {
+                result.innerHTML += "<p style='color: green;'>Javob to'g'ri!</p>";
+            } else {
+                result.innerHTML += "<p style='color: red;'>Javob noto'g'ri.</p>";
+            }
+        }
+
+        function checkEngAnswer2() {
+            const answer = document.getElementById("engAnswer2").value.toLowerCase();
+            const result = document.getElementById("engTestResults");
+            if (answer === "xayr") {
+                result.innerHTML += "<p style='color: green;'>Javob to'g'ri!</p>";
+            } else {
+                result.innerHTML += "<p style='color: red;'>Javob noto'g'ri.</p>";
+            }
+        }
+
+        // IT bo'limidagi testlar
+        document.getElementById("itTest").addEventListener("click", function () {
+            document.getElementById("itTestResults").innerHTML =
+                "<p>1. HTML qisqartmasi nima?</p><input type='text' id='itAnswer'><button onclick='checkItAnswer()'>Javobni tekshirish</button>" +
+                "<p>2. CSS qisqartmasi nima?</p><input type='text' id='itAnswer2'><button onclick='checkItAnswer2()'>Javobni tekshirish</button>";
+        });
+
+        function checkItAnswer() {
+            const answer = document.getElementById("itAnswer").value.toLowerCase();
+            const result = document.getElementById("itTestResults");
+            if (answer === "hypertext markup language") {
+                result.innerHTML += "<p style='color: green;'>Javob to'g'ri!</p>";
+            } else {
+                result.innerHTML += "<p style='color: red;'>Javob noto'g'ri.</p>";
+            }
+        }
+
+        function checkItAnswer2() {
+            const answer = document.getElementById("itAnswer2").value.toLowerCase();
+            const result = document.getElementById("itTestResults");
+            if (answer === "cascading style sheets") {
+                result.innerHTML += "<p style='color: green;'>Javob to'g'ri!</p>";
+            } else {
+                result.innerHTML += "<p style='color: red;'>Javob noto'g'ri.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
